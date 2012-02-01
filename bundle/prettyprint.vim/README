@@ -1,0 +1,23 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2860
+
+*prettyprint* is a Vim plugin to prettyprint vim variable for debug.
+
+Example:
+When g:prettyprint_width = 78, you run the following command,
+    :PP {'triangular':[3,6,9,12,15],'squares':[1,4,16,25,36],'pentagonal':[1,5,12,22,35]}
+
+You get the following display as a result.
+    {
+      'pentagonal': [1, 5, 12, 22, 35],
+      'squares': [1, 4, 16, 25, 36],
+      'triangular': [3, 6, 9, 12, 15]
+    }
+
+
+Example of usage: You try the following command to view the all global variables.
+
+    :PP g:
+
+
+Latest Version:
+https://github.com/thinca/vim-prettyprint
