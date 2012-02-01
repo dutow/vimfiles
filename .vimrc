@@ -38,7 +38,6 @@
   colorscheme vividchalk
 " }
 
-
 " General {
     filetype plugin indent on " load filetype plugins/indent settings
     set autochdir " always switch to the current file directory 
@@ -267,7 +266,6 @@ endif
   autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | q | endif
 " }
 
-
 " Key Mappings {
   " , + c close buffer
   nnoremap <Leader>x :bd<CR>
@@ -302,4 +300,15 @@ endif
   nmap <C-K> <C-W>k<C-W>_
   nmap <C-H> <C-W>h<C-W>_
   nmap <C-L> <C-W>l<C-W>_
+" }
+
+" Git shortcuts {
+" }
+  noremap gts :Gstatus<cr>
+  noremap gtc :Gcommit<cr>
+  noremap gtf :Gcommit -a<cr>
+  noremap gtb :Gblame<cr>
+  noremap gta :Gwrite<cr>
+  noremap gtl :Glog<cr>
+  noremap gtd :Gdiff<cr>
 " }
