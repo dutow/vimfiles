@@ -378,4 +378,5 @@ endfunction
   noremap gta :Gwrite<cr>
   noremap gtl :Glog<cr>
   noremap gtd :Gdiff<cr>
+  noremap gtp :Gpush<cr>
 " }
