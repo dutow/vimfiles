@@ -1,0 +1,51 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3829
+
+Github project: https://github.com/AndrewRadev/inline_edit.vim
+
+Editing javascript within HTML is annoying. To generalize, editing code that's embedded in some different code is annoying.
+
+Given the following example:
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#foo').click(function() {
+          alert('OK');
+        });
+      })
+    </script>
+
+Execute :InlineEdit within the script tag. A proxy buffer is opened with only the javascript. Saving the proxy buffer updates the original one. You can reindent, lint, slice and dice as much as you like.
+
+Currently, it works for:
+
+- Javascript and CSS within HTML -- see above example
+- SQL within ruby (matches "<<-SQL")
+
+    def some_heavy_query
+      execute <<-SQL
+        SELECT * FROM users WHERE something = 'other';
+      SQL
+    end
+
+- Code within fenced markdown blocks
+
+    Some text.
+
+    ``` ruby
+    def foo
+      puts "OK"
+    end
+    ```
+
+    Some other text.
+
+- Django blocks in templates
+
+    {%  block content %}
+    <h1>{{ section.title }}</h1>
+    {% endblock %}
+
+Please check the docs for more detailed instructions.
+
+If you encounter any bugs or have ideas for new features, the issue tracker is on github, at https://github.com/AndrewRadev/inline_edit.vim/issues.
+
