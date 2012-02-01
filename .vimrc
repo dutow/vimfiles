@@ -245,6 +245,7 @@ endif
 " Syntastic {
   let g:syntastic_check_on_open=1 " check syntax on open
   let g:syntastic_auto_loc_list=2 " auto open error list and never close automatically
+  let g:syntastic_enable_signs=1
   set statusline+=%{SyntasticStatuslineFlag()}
   " TODO: disable on windows
 " }
