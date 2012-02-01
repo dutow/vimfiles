@@ -31,6 +31,10 @@
     "             |+-- :write updates alternative file name
     "             +-- :read updates alternative file name
     syntax on " syntax highlighting on
+
+    let mapleader = "," " map leader from / to ,
+    set history=1000 " longer history
+    set title " set terminal title
 " }
 
 " General {
@@ -62,7 +66,7 @@
     " ignore these list file extensions
     set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,
                     \*.jpg,*.gif,*.png
-    set wildmode=list:longest " turn on wild mode huge list
+    set wildmode=list:longest,full " turn on wild mode huge list
 " }
 
 " Vim UI {
@@ -239,4 +243,38 @@ endif
   set statusline+=%{SyntasticStatuslineFlag()}
   " TODO: disable on windows
 " }
+"
+" MiniBufferExplorer {
+  let g:miniBufExplSplitToBelow = 0
+  let g:miniBufExplUseSingleClick = 1
+  let g:miniBufExplorerMoreThanOne = 1
 
+" }
+
+" NERDTree {
+  autocmd vimenter * NERDTree " auto open
+  autocmd VimEnter * wincmd p " move cursor to real buffer
+  " auto close if nerdtree OR minibuffer OR nerdtree AND minibuffer is last
+  " basically if nerdtree is last window or if only one window remains with
+  " nerdtree
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") |  q | endif
+  autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | q | endif
+" }
+
+
+" Key Mappings {
+  " , + c close buffer
+  nnoremap <Leader>x :bd<CR>
+
+  " Disable array keys for navigations {
+    inoremap  <Up>     <NOP>
+    inoremap  <Down>   <NOP>
+    inoremap  <Left>   <NOP>
+    inoremap  <Right>  <NOP>
+    noremap   <Up>     <NOP>
+    noremap   <Down>   <NOP>
+    noremap   <Left>   <NOP>
+    noremap   <Right>  <NOP>
+  " }
+
+" }
