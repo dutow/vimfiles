@@ -288,3 +288,12 @@ endif
 "    \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
   let g:SuperTabDefaultCompletionType = "context"
 " }
+
+" Multiple windows {
+  " One full screen window and closed other windows displayed at the edges of
+  " the screen
+  nmap <C-J> <C-W>j<C-W>_
+  nmap <C-K> <C-W>k<C-W>_
+  nmap <C-H> <C-W>h<C-W>_
+  nmap <C-L> <C-W>l<C-W>_
+" }
