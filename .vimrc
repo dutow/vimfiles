@@ -303,7 +303,6 @@ endif
 " }
 
 " Git shortcuts {
-" }
   noremap gts :Gstatus<cr>
   noremap gtc :Gcommit<cr>
   noremap gtf :Gcommit -a<cr>
