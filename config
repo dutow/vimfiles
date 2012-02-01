@@ -1,8 +1,3 @@
-" Setup pathogen {
-  call pathogen#infect()
-  colorscheme vividchalk
-" }
-
 " Modeline and Notes {
 "   vim: set foldmarker={,} foldlevel=0 spell:
 "
@@ -36,6 +31,13 @@
     set history=1000 " longer history
     set title " set terminal title
 " }
+
+" Setup pathogen {
+" Load modules after nocompatible (required by fugitive)
+  call pathogen#infect()
+  colorscheme vividchalk
+" }
+
 
 " General {
     filetype plugin indent on " load filetype plugins/indent settings
@@ -188,6 +190,10 @@
 " }
 
 " Autocommands {
+    " Git {
+    " Always start on first line
+    autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+    " }
     " Ruby {
         " ruby standard 2 spaces, always
         au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2 
