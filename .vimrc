@@ -1,3 +1,12 @@
+" Screen support {
+  if match($TERM, "screen")!=-1
+    set term=xterm
+    let g:GNU_Screen_used = 1
+  else
+    let g:GNU_Screen_used = 0
+  endif
+" }
+
 " Modeline and Notes {
 "   vim: set foldmarker={,} foldlevel=0 spell:
 "
@@ -388,3 +397,4 @@ endfunction
   noremap gtd :Gdiff<cr>
   noremap gtp :Git push<cr>
 " }
+
