@@ -273,6 +273,9 @@ endif
 " }
 
 " Key Mappings {
+  " Reindent file by pressing F7
+  map <F7> mzgg=G`z<CR>
+
   " , + c close buffer
   nnoremap <Leader>x :bd<CR>
 
