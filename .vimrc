@@ -193,6 +193,11 @@
     " Always start on first line
     autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
     " }
+    " PHP {
+        " php standard says 4 spaces
+        au BufRead,BufNewFile *.php set shiftwidth=4
+        au BufRead,BufNewFile *.php set softtabstop=4
+    " }
     " Ruby {
         " ruby standard 2 spaces, always
         au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2 
