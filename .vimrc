@@ -253,7 +253,7 @@ endif
 " MiniBufferExplorer {
   let g:miniBufExplSplitToBelow = 0
   let g:miniBufExplUseSingleClick = 1
-  let g:miniBufExplorerMoreThanOne = 1
+  let g:miniBufExplorerMoreThanOne = 0
 
 " }
 
