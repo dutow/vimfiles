@@ -146,7 +146,7 @@
     set foldmarker={,} " Fold C style code (only use this as default 
                         " if you use a high foldlevel)
     set foldmethod=marker " Fold on the marker
-    set foldlevel=1   " Autofold class member level
+    set foldlevel=10   " Autofold class member level
     set foldopen=block,hor,mark,percent,quickfix,tag " what movements
                                                       " open folds 
     function SimpleFoldText() " {
