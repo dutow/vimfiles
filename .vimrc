@@ -39,6 +39,7 @@
     let mapleader = "," " map leader from / to ,
     set history=1000 " longer history
     set title " set terminal title
+    set colorcolumn=120 " margin at 120
 " }
 
 " Setup pathogen {
