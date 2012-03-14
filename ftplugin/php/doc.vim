@@ -83,7 +83,7 @@ let g:pdv_cfg_CommentHead = "/**"
 let g:pdv_cfg_Comment1 = " * "
 let g:pdv_cfg_Commentn = " * "
 let g:pdv_cfg_CommentTail = " */"
-let g:pdv_cfg_CommentEnd = "/* }}} */"
+let g:pdv_cfg_CommentEnd = ""
 let g:pdv_cfg_CommentSingle = "//"
 
 " Default values
@@ -105,11 +105,11 @@ let g:pdv_cfg_Uses = 1
 let g:pdv_cfg_paste = 1
 
 " Whether for PHP5 code PHP4 tags should be set, like @access,... (1|0)?
-let g:pdv_cfg_php4always = 1
+let g:pdv_cfg_php4always = 0
  
 " Whether to guess scopes after PEAR coding standards:
 " $_foo/_bar() == <private|protected> (1|0)?
-let g:pdv_cfg_php4guess = 1
+let g:pdv_cfg_php4guess = 0
 
 " If you selected 1 for the last value, this scope identifier will be used for
 " the identifiers having an _ in the first place.
@@ -312,11 +312,11 @@ func! PhpDocFunc()
     " Local indent
     let l:txtBOL = g:pdv_cfg_BOL . l:indent
 
-		exec l:txtBOL . "/* " . l:scope ." ".  funcname . "(" . l:params . ") {{" . "{ */ " . g:pdv_cfg_EOL
+		"exec l:txtBOL . "/* " . l:scope ." ".  funcname . "(" . l:params . ") {{" . "{ */ " . g:pdv_cfg_EOL
 	
     exe l:txtBOL . g:pdv_cfg_CommentHead . g:pdv_cfg_EOL
 	" added folding
-	exe l:txtBOL . g:pdv_cfg_Comment1 . funcname . g:pdv_cfg_EOL
+    exe l:txtBOL . g:pdv_cfg_Comment1 . funcname . g:pdv_cfg_EOL
     exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
 
 	while (l:parameters != ",") && (l:parameters != "")
@@ -353,7 +353,8 @@ func! PhpDocFunc()
     if l:scope != ""
     	exe l:txtBOL . g:pdv_cfg_Commentn . "@access " . l:scope . g:pdv_cfg_EOL
     endif
-	exe l:txtBOL . g:pdv_cfg_Commentn . "@return " . g:pdv_cfg_ReturnVal . g:pdv_cfg_EOL
+    exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
+    exe l:txtBOL . g:pdv_cfg_Commentn . "@return " . g:pdv_cfg_ReturnVal . g:pdv_cfg_EOL
 
 	" Close the comment block.
 	exe l:txtBOL . g:pdv_cfg_CommentTail . g:pdv_cfg_EOL
