@@ -377,6 +377,9 @@ endfunction
 " weren't any errors, the current window is maximized.
 map <silent> ,i :Errors<CR>:call MaximizeIfNotQuickfix()<CR>
 
+" Remap ,p to php documentation generation
+map ,p :set paste<CR>:call PhpDoc()<CR>;set nopaste<CR>
+
 " Maximizes the current window if it is not the quickfix window.
 function MaximizeIfNotQuickfix()
   if (getbufvar(winbufnr(winnr()), "&buftype") != "quickfix")
