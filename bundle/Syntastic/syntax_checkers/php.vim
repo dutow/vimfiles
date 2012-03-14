@@ -20,7 +20,7 @@ if !executable("php")
 endif
 
 if !exists("g:syntastic_cancellar_standard")
-    let g:syntastic_cancellar_standard = fnamemodify(expand("<sfile>"), ":p:h") . "/php/Cancellar"
+    let g:syntastic_cancellar_standard = fnamemodify(expand("<sfile>"), ":p:h") . "/php/Symfony2"
     echo g:syntastic_cancellar_standard
 endif
 
