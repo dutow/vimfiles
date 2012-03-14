@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Standard">
+
+ <description>Cancellar coding standard</description>
+
+ <rule ref="PEAR"/>
+
+ <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+ <rule ref="Generic.Commenting.Todo"/>
+ <rule ref="Generic.ControlStructures.InlineControlStructure"/>
+
+ <rule ref="Generic.Commenting.Todo.CommentFound">
+  <message>Please review this TODO comment: %s</message>
+  <severity>3</severity>
+ </rule>
+
+ <rule ref="Generic.Files.LineLength">
+  <properties>
+   <property name="lineLimit" value="120"/>
+   <property name="absoluteLineLimit" value="120"/>
+  </properties>
+ </rule>
+
+ <rule ref="Generic.Files.LineEndings">
+  <properties>
+   <property name="eolChar" value="\n"/>
+  </properties>
+ </rule>
+
+ <rule ref="Generic.Formatting.MultipleStatementAlignment">
+  <properties>
+   <property name="maxPadding" value="8"/>
+   <property name="ignoreMultiLine" value="true"/>
+   <property name="error" value="true"/>
+  </properties>
+ </rule>
+
+</ruleset>
