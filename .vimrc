@@ -378,7 +378,7 @@ endfunction
 map <silent> ,i :Errors<CR>:call MaximizeIfNotQuickfix()<CR>
 
 " Remap ,p to php documentation generation
-map ,p :set paste<CR>:call PhpDoc()<CR>;set nopaste<CR>
+map ,p :set paste<CR>:call PhpDoc()<CR>:set nopaste<CR>
 
 " Maximizes the current window if it is not the quickfix window.
 function MaximizeIfNotQuickfix()
