@@ -92,7 +92,7 @@ let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = "Webdav"
 let g:pdv_cfg_Version = "Release: v0.1"
 let g:pdv_cfg_Author = "Zsolt Parragi <zsolt.parragi@cancellar.hu>"
-let g:pdv_cfg_Copyright = "2012 Cancellar Informatika"
+let g:pdv_cfg_Copyright = "2012 Cancellar"
 let g:pdv_cfg_License = "MIT License (http://www.opensource.org/licenses/mit-license.php)"
 
 let g:pdv_cfg_ReturnVal = "void"
