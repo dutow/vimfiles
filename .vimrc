@@ -362,7 +362,7 @@ endif
 
 " Maximize the window after entering it, be sure to keep the quickfix window
 " at the specified height.
-au WinEnter * call MaximizeAndResizeQuickfix(8)
+" au WinEnter * call MaximizeAndResizeQuickfix(8)
 
 " Maximize current window and set the quickfix window to the specified height.
 " TODO: make buffer switcher fixed size at the top
