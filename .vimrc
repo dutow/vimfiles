@@ -51,6 +51,7 @@
     map <leader>pp :setlocal paste!<cr>
 
     nnoremap <F5> :GundoToggle<CR>
+    let g:gundo_right = 1
 
 " }
 
