@@ -50,6 +50,8 @@
     " Toggle paste mode on and off
     map <leader>pp :setlocal paste!<cr>
 
+    nnoremap <F5> :GundoToggle<CR>
+
 " }
 
 " Setup pathogen {
@@ -366,62 +368,62 @@ au WinEnter * call MaximizeAndResizeQuickfix(8)
 " TODO: make buffer switcher fixed size at the top
 " TODO: don't resize nerdtree
 " TODO: set window's default height to 0?
-function MaximizeAndResizeQuickfix(quickfixHeight)
-  " Redraw after executing the function.
-  set lazyredraw
-  " Ignore WinEnter events for now.
-  set ei=WinEnter
-  " Maximize current window unless it is a special window.
-  " (don't resize buffer switcher or NERDTree)
-  " TODO: fix this for nerdtree
-  if (getbufvar(winbufnr(winnr()), "&buflisted") != 0)
-    wincmd _
-  endif
-  " If the current window is the quickfix window
-  if (getbufvar(winbufnr(winnr()), "&buftype") == "quickfix")
-    " Maximize previous window, and resize the quickfix window to the
-    " specified height.
-    wincmd p
-    resize
-    wincmd p
-    exe "resize " . a:quickfixHeight
-  else " if the current window has a hidden buffer (see at the start of this function
-    if (getbufvar(winbufnr(winnr()), "&buflisted") == 0)
-      " nop
-    else
-      " Current window isn't the quickfix window, and isn't spec window => loop over all windows to
-      " find it (if it exists...)
-      let i = 1
-      let currBufNr = winbufnr(i)
-      while (currBufNr != -1)
-        " If the buffer in window i is the quickfix buffer.
-        if (getbufvar(currBufNr, "&buftype") == "quickfix")
-          " Go to the quickfix window, set height to quickfixHeight, and jump to the previous
-          " window.
-          exe i . "wincmd w"
-          exe "resize " . a:quickfixHeight
-          wincmd p
-          break
-        endif
-        let i = i + 1
-        let currBufNr = winbufnr(i)
-      endwhile
-    endif
-  endif
-  set ei-=WinEnter
-  set nolazyredraw
-endfunction
+"function MaximizeAndResizeQuickfix(quickfixHeight)
+"  " Redraw after executing the function.
+"  set lazyredraw
+"  " Ignore WinEnter events for now.
+"  set ei=WinEnter
+"  " Maximize current window unless it is a special window.
+"  " (don't resize buffer switcher or NERDTree)
+"  " TODO: fix this for nerdtree
+"  if (getbufvar(winbufnr(winnr()), "&buflisted") != 0)
+"    wincmd _
+"  endif
+"  " If the current window is the quickfix window
+"  if (getbufvar(winbufnr(winnr()), "&buftype") == "quickfix")
+"    " Maximize previous window, and resize the quickfix window to the
+"    " specified height.
+"    wincmd p
+"    resize
+"    wincmd p
+"    exe "resize " . a:quickfixHeight
+"  else " if the current window has a hidden buffer (see at the start of this function
+"    if (getbufvar(winbufnr(winnr()), "&buflisted") == 0)
+"      " nop
+"    else
+"      " Current window isn't the quickfix window, and isn't spec window => loop over all windows to
+"      " find it (if it exists...)
+"      let i = 1
+"      let currBufNr = winbufnr(i)
+"      while (currBufNr != -1)
+"        " If the buffer in window i is the quickfix buffer.
+"        if (getbufvar(currBufNr, "&buftype") == "quickfix")
+"          " Go to the quickfix window, set height to quickfixHeight, and jump to the previous
+"          " window.
+"          exe i . "wincmd w"
+"          exe "resize " . a:quickfixHeight
+"          wincmd p
+"          break
+"        endif
+"        let i = i + 1
+"        let currBufNr = winbufnr(i)
+"      endwhile
+"    endif
+"  endif
+"  set ei-=WinEnter
+"  set nolazyredraw
+"endfunction
 
 " Remap ,m to make and open error window if there are any errors. If there
 " weren't any errors, the current window is maximized.
-map <silent> ,i :Errors<CR>:call MaximizeIfNotQuickfix()<CR>
+"map <silent> ,i :Errors<CR>:call MaximizeIfNotQuickfix()<CR>
 
 " Maximizes the current window if it is not the quickfix window.
-function MaximizeIfNotQuickfix()
-  if (getbufvar(winbufnr(winnr()), "&buftype") != "quickfix")
-    "wincmd _
-  endif
-endfunction
+"function MaximizeIfNotQuickfix()
+"  if (getbufvar(winbufnr(winnr()), "&buftype") != "quickfix")
+"    "wincmd _
+"  endif
+"endfunction
 
 
 
