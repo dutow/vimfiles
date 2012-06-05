@@ -454,6 +454,13 @@ endif
 
 " }
 
+" Folding {
+  inoremap <F1> <C-O>za
+  nnoremap <F1> za
+  onoremap <F1> <C-C>za
+  vnoremap <F1> zf
+" }
+
 " Visual mode {
   " Visual mode pressing * or # searches for the current selection
   " Super useful! From an idea by Michael Naumann
