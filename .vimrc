@@ -40,12 +40,43 @@
     set history=1000 " longer history
     set title " set terminal title
     set colorcolumn=120 " margin at 120
+
+    set magic " regex magic!
+
+    set encoding=utf8 " or not?
+
+    " Remove the Windows ^M - when the encodings gets messed up
+    noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+    " Toggle paste mode on and off
+    map <leader>pp :setlocal paste!<cr>
+
+    nnoremap <F5> :GundoToggle<CR>
+    let g:gundo_right = 1
 " }
 
 " Setup pathogen {
 " Load modules after nocompatible (required by fugitive)
   call pathogen#infect()
   colorscheme vividchalk
+" }
+
+" Last position on open {
+  " Return to last edit position when opening files (You want this!)
+  autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
+  " Remember info about open buffers on close
+  set viminfo^=%
+" }
+
+" Easy line moving {
+  " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+  nmap <M-j> mz:m+<cr>`z
+  nmap <M-k> mz:m-2<cr>`z
+  vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+  vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " }
 
 " General {
@@ -147,7 +178,7 @@
     set foldmarker={,} " Fold C style code (only use this as default 
                         " if you use a high foldlevel)
     set foldmethod=marker " Fold on the marker
-    set foldlevel=100  " Autofold class member level
+    set foldlevel=1  " Autofold class member level
     set foldopen=block,hor,mark,percent,quickfix,tag " what movements
                                                       " open folds 
     function SimpleFoldText() " {
@@ -231,12 +262,23 @@
         au BufRead,BufNewFile *.notes set spell
     " }
     au BufNewFile,BufRead *.ahk setf ahk 
+
+    " Python & Coffee {
+      " Delete trailing white space on save, useful for Python and CoffeeScript ;)
+      func! DeleteTrailingWS()
+        exe "normal mz"
+        %s/\s\+$//ge
+        exe "normal `z"
+      endfunc
+      autocmd BufWrite *.py :call DeleteTrailingWS()
+      autocmd BufWrite *.coffee :call DeleteTrailingWS()
+    " }
 " }
 
 " GUI Settings {
 if has("gui_running")
     " Basics {
-"        colorscheme metacosm " my color scheme (only works in GUI)
+        colorscheme moria " my color scheme (only works in GUI)
         set columns=180 " perfect size for me
         set guifont=Consolas:h10 " My favorite font
         set guioptions=ce 
@@ -262,7 +304,7 @@ endif
   let g:syntastic_auto_loc_list=2 " auto open error list and never close automatically
   let g:syntastic_enable_signs=1
   set statusline+=%{SyntasticStatuslineFlag()}
-  " TODO: disable on windows
+  " TODO: disable on windows?
 " }
 "
 " MiniBufferExplorer {
@@ -321,71 +363,71 @@ endif
 
 " Maximize the window after entering it, be sure to keep the quickfix window
 " at the specified height.
-au WinEnter * call MaximizeAndResizeQuickfix(8)
+" au WinEnter * call MaximizeAndResizeQuickfix(8)
 
 " Maximize current window and set the quickfix window to the specified height.
 " TODO: make buffer switcher fixed size at the top
 " TODO: don't resize nerdtree
 " TODO: set window's default height to 0?
-function MaximizeAndResizeQuickfix(quickfixHeight)
-  " Redraw after executing the function.
-  set lazyredraw
-  " Ignore WinEnter events for now.
-  set ei=WinEnter
-  " Maximize current window unless it is a special window.
-  " (don't resize buffer switcher or NERDTree)
-  " TODO: fix this for nerdtree
-  if (getbufvar(winbufnr(winnr()), "&buflisted") != 0)
-    wincmd _
-  endif
-  " If the current window is the quickfix window
-  if (getbufvar(winbufnr(winnr()), "&buftype") == "quickfix")
-    " Maximize previous window, and resize the quickfix window to the
-    " specified height.
-    wincmd p
-    resize
-    wincmd p
-    exe "resize " . a:quickfixHeight
-  else " if the current window has a hidden buffer (see at the start of this function
-    if (getbufvar(winbufnr(winnr()), "&buflisted") == 0)
-      " nop
-    else
-      " Current window isn't the quickfix window, and isn't spec window => loop over all windows to
-      " find it (if it exists...)
-      let i = 1
-      let currBufNr = winbufnr(i)
-      while (currBufNr != -1)
-        " If the buffer in window i is the quickfix buffer.
-        if (getbufvar(currBufNr, "&buftype") == "quickfix")
-          " Go to the quickfix window, set height to quickfixHeight, and jump to the previous
-          " window.
-          exe i . "wincmd w"
-          exe "resize " . a:quickfixHeight
-          wincmd p
-          break
-        endif
-        let i = i + 1
-        let currBufNr = winbufnr(i)
-      endwhile
-    endif
-  endif
-  set ei-=WinEnter
-  set nolazyredraw
-endfunction
+"function MaximizeAndResizeQuickfix(quickfixHeight)
+"  " Redraw after executing the function.
+"  set lazyredraw
+"  " Ignore WinEnter events for now.
+"  set ei=WinEnter
+"  " Maximize current window unless it is a special window.
+"  " (don't resize buffer switcher or NERDTree)
+"  " TODO: fix this for nerdtree
+"  if (getbufvar(winbufnr(winnr()), "&buflisted") != 0)
+"    wincmd _
+"  endif
+"  " If the current window is the quickfix window
+"  if (getbufvar(winbufnr(winnr()), "&buftype") == "quickfix")
+"    " Maximize previous window, and resize the quickfix window to the
+"    " specified height.
+"    wincmd p
+"    resize
+"    wincmd p
+"    exe "resize " . a:quickfixHeight
+"  else " if the current window has a hidden buffer (see at the start of this function
+"    if (getbufvar(winbufnr(winnr()), "&buflisted") == 0)
+"      " nop
+"    else
+"      " Current window isn't the quickfix window, and isn't spec window => loop over all windows to
+"      " find it (if it exists...)
+"      let i = 1
+"      let currBufNr = winbufnr(i)
+"      while (currBufNr != -1)
+"        " If the buffer in window i is the quickfix buffer.
+"        if (getbufvar(currBufNr, "&buftype") == "quickfix")
+"          " Go to the quickfix window, set height to quickfixHeight, and jump to the previous
+"          " window.
+"          exe i . "wincmd w"
+"          exe "resize " . a:quickfixHeight
+"          wincmd p
+"          break
+"        endif
+"        let i = i + 1
+"        let currBufNr = winbufnr(i)
+"      endwhile
+"    endif
+"  endif
+"  set ei-=WinEnter
+"  set nolazyredraw
+"endfunction
 
 " Remap ,m to make and open error window if there are any errors. If there
 " weren't any errors, the current window is maximized.
-map <silent> ,i :Errors<CR>:call MaximizeIfNotQuickfix()<CR>
+"map <silent> ,i :Errors<CR>:call MaximizeIfNotQuickfix()<CR>
 
 " Remap ,p to php documentation generation
 map ,p :set paste<CR>:call PhpDoc()<CR>:set nopaste<CR>
 
 " Maximizes the current window if it is not the quickfix window.
-function MaximizeIfNotQuickfix()
-  if (getbufvar(winbufnr(winnr()), "&buftype") != "quickfix")
-    "wincmd _
-  endif
-endfunction
+"function MaximizeIfNotQuickfix()
+"  if (getbufvar(winbufnr(winnr()), "&buftype") != "quickfix")
+"    "wincmd _
+"  endif
+"endfunction
 
 
 
@@ -402,3 +444,33 @@ endfunction
   noremap gtp :Git push<cr>
 " }
 
+" Tabs {
+  " Useful mappings for managing tabs
+  map <leader>tn :tabnew<cr>
+  map <leader>to :tabonly<cr>
+  map <leader>tc :tabclose<cr>
+  map <leader>tm :tabmove
+
+  " Opens a new tab with the current buffer's path
+  " Super useful when editing files in the same directory
+  map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" }
+
+" Folding {
+  inoremap <F1> <C-O>za
+  nnoremap <F1> za
+  onoremap <F1> <C-C>za
+  vnoremap <F1> zf
+" }
+
+" Visual mode {
+  " Visual mode pressing * or # searches for the current selection
+  " Super useful! From an idea by Michael Naumann
+  vnoremap <silent> * :call VisualSelection('f')<CR>
+  vnoremap <silent> # :call VisualSelection('b')<CR>
+" }
+
+" Leader quicks {
+  nmap <leader>w :w!<cr>
+" }
