@@ -280,7 +280,11 @@ if has("gui_running")
     " Basics {
         colorscheme moria " my color scheme (only works in GUI)
         set columns=180 " perfect size for me
-        set guifont=Consolas:h10 " My favorite font
+        if has("gui_gtk2") " *****#%^$ OS differences
+          set guifont=Consolas\ 10
+        else
+          set guifont=Consolas:h10
+        end
         set guioptions=ce 
         "              ||
         "              |+-- use simple dialogs rather than pop-ups
@@ -290,11 +294,19 @@ if has("gui_running")
     " }
 
     " Font Switching Binds {
-        map <F8> <ESC>:set guifont=Consolas:h8<CR>
-        map <F9> <ESC>:set guifont=Consolas:h10<CR>
-        map <F10> <ESC>:set guifont=Consolas:h12<CR>
-        map <F11> <ESC>:set guifont=Consolas:h16<CR>
-        map <F12> <ESC>:set guifont=Consolas:h20<CR>
+        if has("gui_gtk2") " *****#%^$ OS differences
+          map <F8> <ESC>:set guifont=Consolas\ 8<CR>
+          map <F9> <ESC>:set guifont=Consolas\ 10<CR>
+          map <F10> <ESC>:set guifont=Consolas\ 12<CR>
+          map <F11> <ESC>:set guifont=Consolas\ 16<CR>
+          map <F12> <ESC>:set guifont=Consolas\ 20<CR>
+        else
+          map <F8> <ESC>:set guifont=Consolas:h8<CR>
+          map <F9> <ESC>:set guifont=Consolas:h10<CR>
+          map <F10> <ESC>:set guifont=Consolas:h12<CR>
+          map <F11> <ESC>:set guifont=Consolas:h16<CR>
+          map <F12> <ESC>:set guifont=Consolas:h20<CR>
+        end
     " }
 endif
 " }
