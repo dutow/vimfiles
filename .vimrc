@@ -334,6 +334,7 @@ endif
   " nerdtree
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") |  q | endif
   autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | q | endif
+  cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
 " }
 
 " Key Mappings {
