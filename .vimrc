@@ -327,14 +327,17 @@ endif
 " }
 
 " NERDTree {
-  autocmd vimenter * NERDTree " auto open
-  autocmd VimEnter * wincmd p " move cursor to real buffer
+  nnoremap <F4> :NERDTreeToggle<CR>
+
+  " autostart nerdtree only if started without files
+  autocmd VimEnter * if !argc() | NERDTree | endif
+
   " auto close if nerdtree OR minibuffer OR nerdtree AND minibuffer is last
   " basically if nerdtree is last window or if only one window remains with
   " nerdtree
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") |  q | endif
   autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | q | endif
-  cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
+
 " }
 
 " Key Mappings {
@@ -342,6 +345,8 @@ endif
   map <F7> mzgg=G`z<CR>
 
   " , + c close buffer
+  " also fix bd
+  cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
   nnoremap <Leader>x :bd<CR>
 
   " Disable array keys for navigations {
@@ -428,11 +433,12 @@ endif
 "  set nolazyredraw
 "endfunction
 
-" Remap ,m to make and open error window if there are any errors. If there
+" Remap ,i to make and open error window if there are any errors. If there
 " weren't any errors, the current window is maximized.
 "map <silent> ,i :Errors<CR>:call MaximizeIfNotQuickfix()<CR>
 
 " Remap ,p to php documentation generation
+" TODO: only in php code!
 map ,p :set paste<CR>:call PhpDoc()<CR>:set nopaste<CR>
 
 " Maximizes the current window if it is not the quickfix window.
