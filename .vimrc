@@ -1,3 +1,11 @@
+" Notes {
+" .vimrc
+" Zsolt Parragi <zsolt.parragi@cancellar.hu>
+" http://github.com/dutow/vimfiles
+"   Originally from:
+"   http://robertmelton.com/
+" }
+
 " Screen support {
   if match($TERM, "screen")!=-1
     set term=xterm
@@ -7,17 +15,10 @@
   endif
 " }
 
-" Modeline and Notes {
-"   vim: set foldmarker={,} foldlevel=0 spell:
-"
-"   Originally from:
-"   http://robertmelton.com/
-" }
-
 " Basics {
-    set nocompatible " explicitly get out of vi-compatible mode
-    set noexrc " don't use local version of .(g)vimrc, .exrc
-    set background=dark " we plan to use a dark background
+    set nocompatible                " explicitly get out of vi-compatible mode
+    set noexrc                      " don't use local version of .(g)vimrc, .exrc
+    set background=dark             " we plan to use a dark background
     set cpoptions=aABceFsmq
     "             |||||||||
     "             ||||||||+-- When joining lines, leave the cursor 
@@ -34,14 +35,14 @@
     "             ||+-- A backslash has no special meaning in mappings
     "             |+-- :write updates alternative file name
     "             +-- :read updates alternative file name
-    syntax on " syntax highlighting on
+    syntax on                       " syntax highlighting on
 
-    let mapleader = "," " map leader from / to ,
-    set history=1000 " longer history
-    set title " set terminal title
-    set colorcolumn=120 " margin at 120
+    let mapleader = ","             " map leader from / to ,
+    set history=1000                " longer history
+    set title                       " set terminal title
+    set colorcolumn=120             " margin at 120
 
-    set magic " regex magic!
+    set magic                       " regex magic!
 
     set encoding=utf8 " or not?
 
@@ -56,7 +57,7 @@
 " }
 
 " Setup pathogen {
-" Load modules after nocompatible (required by fugitive)
+  " Load modules after nocompatible (required by fugitive)
   call pathogen#infect()
   colorscheme vividchalk
 " }
