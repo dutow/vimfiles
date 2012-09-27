@@ -8,6 +8,8 @@ INSTALLATION
  * git
  * curl
  * ruby-debug-ide
+ * php_codesniffer USING pear. The default phpcs installed by ubuntu's or debian's package manager is old and the
+   bundled symfony2/cancellar standard doesn't work with it.
 * OPTIONAL: choose a diffent color theme
 
 THEMES

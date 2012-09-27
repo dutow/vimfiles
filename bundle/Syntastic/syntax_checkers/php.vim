@@ -19,9 +19,14 @@ if !executable("php")
     finish
 endif
 
+if !exists("g:syntastic_cancellar_standard")
+    let g:syntastic_cancellar_standard = fnamemodify(expand("<sfile>"), ":p:h") . "/php/Symfony2"
+    echo g:syntastic_cancellar_standard
+endif
+
 "Support passing configuration directives to phpcs
 if !exists("g:syntastic_phpcs_conf")
-    let g:syntastic_phpcs_conf = "--standard=Zend"
+    let g:syntastic_phpcs_conf = "--standard=" . g:syntastic_cancellar_standard
 endif
 
 if !exists("g:syntastic_phpcs_disable")
