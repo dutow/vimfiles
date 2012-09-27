@@ -65,13 +65,6 @@
   set viminfo^=%
 " }
 
-" Easy line moving {
-  " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-  nmap <M-j> mz:m+<cr>`z
-  nmap <M-k> mz:m-2<cr>`z
-  vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-  vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-" }
 
 " General {
     filetype plugin indent on " load filetype plugins/indent settings
@@ -215,20 +208,6 @@
     " }
 " }
 
-" Mappings {
-    " ROT13 - fun
-    map <F12> ggVGg?
-
-    " space / shift-space scroll in normal mode
-    noremap <S-space> <C-b>
-    noremap <space> <C-f>
-
-    " Remove the Windows ^M - when the encodings gets messed up
-    noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-    " Toggle paste mode on and off
-    map <leader>pp :setlocal paste!<cr>
-" }
 
 " Autocommands {
     " Git {
@@ -310,6 +289,29 @@ if has("gui_running")
         end
     " }
 endif
+" }
+
+" Mappings {
+    " ROT13 - fun
+    map <F12> ggVGg?
+
+    " space / shift-space scroll in normal mode
+    noremap <S-space> <C-b>
+    noremap <space> <C-f>
+
+    " Remove the Windows ^M - when the encodings gets messed up
+    noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+    " Toggle paste mode on and off
+    map <leader>pp :setlocal paste!<cr>
+" }
+
+" Easy line moving {
+  " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+  nmap <M-j> mz:m+<cr>`z
+  nmap <M-k> mz:m-2<cr>`z
+  vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+  vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " }
 
 " Syntastic {
