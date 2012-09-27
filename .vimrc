@@ -337,13 +337,6 @@ endif
 
   " autostart nerdtree only if started without files
   autocmd VimEnter * if !argc() | NERDTree | endif
-
-  " auto close if nerdtree OR minibuffer OR nerdtree AND minibuffer is last
-  " basically if nerdtree is last window or if only one window remains with
-  " nerdtree
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") |  q | endif
-  autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | q | endif
-
 " }
 
 " Key Mappings {
