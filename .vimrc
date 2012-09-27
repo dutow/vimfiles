@@ -290,8 +290,6 @@ endif
 " }
 
 " Mappings {
-    " ROT13 - fun
-    map <F12> ggVGg?
 
     " space / shift-space scroll in normal mode
     noremap <S-space> <C-b>
