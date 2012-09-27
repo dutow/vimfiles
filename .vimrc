@@ -300,6 +300,8 @@ endif
 
     " Toggle paste mode on and off
     map <leader>pp :setlocal paste!<cr>
+
+    map <leader>qq :qa<cr>
 " }
 
 " Easy line moving {
