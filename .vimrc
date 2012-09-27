@@ -61,7 +61,6 @@
 " Setup pathogen {
   " Load modules after nocompatible (required by fugitive)
   call pathogen#infect()
-  colorscheme vividchalk
 " }
 
 " Last position on open {
@@ -115,6 +114,8 @@
 " }
 
 " Vim UI {
+    colorscheme vividchalk
+
     set cursorcolumn " highlight the current column
     set cursorline " highlight current line
     set incsearch " BUT do highlight as you type you 
