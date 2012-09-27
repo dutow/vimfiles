@@ -325,6 +325,8 @@ endif
   let g:miniBufExplUseSingleClick = 1
   let g:miniBufExplorerMoreThanOne = 0
 
+  noremap   <Left>   :MBEbp<CR>
+  noremap   <Right>  :MBEbn<CR>
 " }
 
 " Gundo {
@@ -355,8 +357,8 @@ endif
     inoremap  <Right>  <NOP>
     noremap   <Up>     <NOP>
     noremap   <Down>   <NOP>
-    noremap   <Left>   <NOP>
-    noremap   <Right>  <NOP>
+    "noremap   <Left>   <NOP>
+    "noremap   <Right>  <NOP>
   " }
 
 " }
