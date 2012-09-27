@@ -65,7 +65,6 @@
   set viminfo^=%
 " }
 
-
 " General {
     filetype plugin indent on " load filetype plugins/indent settings
     set autochdir " always switch to the current file directory 
@@ -207,7 +206,6 @@
         " }
     " }
 " }
-
 
 " Autocommands {
     " Git {
