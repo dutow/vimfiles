@@ -39,7 +39,7 @@
     let mapleader = "," " map leader from / to ,
     set history=1000 " longer history
     set title " set terminal title
-    if version >= 730
+    if version >= 703
       set colorcolumn=120 " margin at 120
     endif
 
