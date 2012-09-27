@@ -53,9 +53,6 @@
 
     " Toggle paste mode on and off
     map <leader>pp :setlocal paste!<cr>
-
-    nnoremap <F5> :GundoToggle<CR>
-    let g:gundo_right = 1
 " }
 
 " Setup pathogen {
@@ -322,12 +319,17 @@ endif
   set statusline+=%{SyntasticStatuslineFlag()}
   " TODO: disable on windows?
 " }
-"
+
 " MiniBufferExplorer {
   let g:miniBufExplSplitToBelow = 0
   let g:miniBufExplUseSingleClick = 1
   let g:miniBufExplorerMoreThanOne = 0
 
+" }
+
+" Gundo {
+    nnoremap <F5> :GundoToggle<CR>
+    let g:gundo_right = 1
 " }
 
 " NERDTree {
