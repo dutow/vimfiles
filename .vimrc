@@ -348,7 +348,7 @@ endif
   " , + c close buffer
   " also fix bd
   cnoremap <expr> bd (getcmdtype() == ':' ? 'Bclose' : 'bd')
-  nnoremap <Leader>x :bd<CR>
+  nnoremap <Leader>x :Bclose<CR>
 
   " Disable array keys for navigations {
     inoremap  <Up>     <NOP>
