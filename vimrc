@@ -50,9 +50,9 @@ set title
 set colorcolumn=120
 set magic
 set backup
-let backupdir=VIMDIR . "/backup"
+execute "set backupdir=" . VIMDIR ."backup/"
+execute "set directory=" . VIMDIR ."tmp/"
 set clipboard=unnamed
-let directory=VIMDIR . "/tmp"
 set fileformats=unix,dos,mac
 set hidden
 set iskeyword+=_,$,@,%,#
