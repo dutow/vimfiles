@@ -61,6 +61,14 @@ set numberwidth=5
 set showcmd
 set nowrap
 
+" Fugitiv {
+nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>gb :Git branch<Space>
+" }
+
 " Gundo {
     nnoremap <F5> :GundoToggle<CR>
     let g:gundo_right = 1
