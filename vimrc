@@ -1,8 +1,19 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("win32")
+  set rtp+=%HOME%/vimfiles/bundle/Vundle.vim/
+  let VIMDIR="~/vimfiles/"
+  cd ~
+else
+  set rtp+=~/.vim/bundle/Vundle.vim
+  let VIMDIR="~/.vim/"
+  call vundle#begin()
+endif
+
+let BUNDLEDIR=VIMDIR . "/bundle"
+call vundle#begin(BUNDLEDIR)
+  
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
@@ -41,9 +52,9 @@ set title
 set colorcolumn=120
 set magic
 set backup
-set backupdir=~/.vim/backup
+execute "set backupdir=" . VIMDIR ."backup/"
+execute "set directory=" . VIMDIR ."tmp/"
 set clipboard=unnamed
-set directory=~/.vim/tmp
 set fileformats=unix,dos,mac
 set hidden
 set iskeyword+=_,$,@,%,#
