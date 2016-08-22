@@ -10,6 +10,8 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'sjl/gundo.vim'
 
+Plugin 'jalcine/cmake.vim'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 
