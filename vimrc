@@ -4,7 +4,7 @@ filetype off
 if has("win32")
   set rtp+=%HOME%/vimfiles/bundle/Vundle.vim/
   let VIMDIR="~/vimfiles/"
-  cd ~
+  set guifont=Consolas:h12
 else
   set rtp+=~/.vim/bundle/Vundle.vim
   let VIMDIR="~/.vim/"
