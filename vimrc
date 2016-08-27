@@ -64,6 +64,7 @@ set noerrorbells
 set novisualbell
 set wildmenu
 set wildmode=list:longest,full
+set backspace=indent,eol,start
 
 set cursorcolumn
 set cursorline
