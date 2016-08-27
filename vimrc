@@ -21,6 +21,7 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'sjl/gundo.vim'
 
+Plugin 'tpope/vim-dispatch'
 Plugin 'jalcine/cmake.vim'
 
 Plugin 'scrooloose/nerdtree'
@@ -112,4 +113,5 @@ nnoremap <leader>gb :Git branch<Space>
 " C++ {
   autocmd FileType c ClangFormatAutoEnable
   autocmd FileType cpp ClangFormatAutoEnable
+  set makeprg=ninja
 " }
