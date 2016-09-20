@@ -37,6 +37,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 call vundle#end()
 filetype plugin indent on
@@ -75,6 +76,10 @@ set showcmd
 set nowrap
 
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab smarttab
 
 " Fugitiv {
 nnoremap <leader>ga :Git add %:p<CR><CR>
