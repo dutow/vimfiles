@@ -21,7 +21,7 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'sjl/gundo.vim'
 
-#Plugin 'jalcine/cmake.vim'
+" Plugin 'jalcine/cmake.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -73,6 +73,8 @@ set number
 set numberwidth=5
 set showcmd
 set nowrap
+
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
 
 " Fugitiv {
 nnoremap <leader>ga :Git add %:p<CR><CR>
