@@ -33,7 +33,6 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'rhysd/vim-clang-format'
 
 Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vim-ruby/vim-ruby'
 
