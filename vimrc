@@ -44,7 +44,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'mileszs/ack.vim'
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smartcase'
+  let g:ackprg = 'ag --vimgrep --smart-case'
 endif
 
 Plugin 'vim-airline/vim-airline'
