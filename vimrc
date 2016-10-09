@@ -39,6 +39,12 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nathanaelkane/vim-indent-guides'
 
+Plugin 'mileszs/ack.vim'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --smartcase'
+endif
+
+
 call vundle#end()
 filetype plugin indent on
 
