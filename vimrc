@@ -53,7 +53,7 @@ set background=dark
 colorscheme solarized
 
 set noexrc " don't use .gvimrc etc
-let mapleader =","
+let mapleader ="\<Space>"
 set history=1000
 set title
 set colorcolumn=120
@@ -125,4 +125,24 @@ nnoremap <leader>gb :Git branch<Space>
 " C++ {
   autocmd FileType c ClangFormatAutoEnable
   autocmd FileType cpp ClangFormatAutoEnable
+" }
+
+" Quick Stuff {
+
+" Quick save and close
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+
+" Using the system dashboard
+vmap <Leader>d "+d
+vmap <Leader>y "+y
+vmap <Leader>P "+P
+vmap <Leader>p "+p
+nmap <Leader>P "+P
+nmap <Leader>p "+p
+
+" Git productivity
+nmap <Lader>s <Plug>Gstatus
+nmap <Lader>c <Plug>Gcommit
+
 " }
