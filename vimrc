@@ -4,7 +4,7 @@ filetype off
 if has("win32")
   set rtp+=%HOME%/vimfiles/bundle/Vundle.vim/
   let VIMDIR="~/vimfiles/"
-  cd ~
+  set guifont=Consolas:h12
 else
   set rtp+=~/.vim/bundle/Vundle.vim
   let VIMDIR="~/.vim/"
@@ -22,6 +22,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'sjl/gundo.vim'
 
 " Plugin 'jalcine/cmake.vim'
+Plugin 'tpope/vim-dispatch'
+Plugin 'jalcine/cmake.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -70,6 +72,7 @@ set noerrorbells
 set novisualbell
 set wildmenu
 set wildmode=list:longest,full
+set backspace=indent,eol,start
 
 set cursorcolumn
 set cursorline
@@ -125,6 +128,7 @@ nnoremap <leader>gb :Git branch<Space>
 " C++ {
   autocmd FileType c ClangFormatAutoEnable
   autocmd FileType cpp ClangFormatAutoEnable
+  set makeprg=ninja
 " }
 
 " Quick Stuff {
