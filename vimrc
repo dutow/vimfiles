@@ -41,6 +41,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nathanaelkane/vim-indent-guides'
 
+Plugin 'christoomey/vim-tmux-navigator'
+
 Plugin 'mileszs/ack.vim'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case'
@@ -87,6 +89,7 @@ set showcmd
 set nowrap
 
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set list
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
@@ -146,5 +149,11 @@ vmap <Leader>P "+P
 vmap <Leader>p "+p
 nmap <Leader>P "+P
 nmap <Leader>p "+p
+nmap <Leader><Leader> :Ack!  
 
+nmap <Leader>nf :NERDTreeFind<CR>
 " }
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" " Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
